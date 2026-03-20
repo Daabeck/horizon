@@ -1,0 +1,230 @@
+:root {
+  --bg-base: #04060b;
+  --bg-deep: #090d16;
+  --bg-panel: rgba(10, 13, 22, 0.68);
+  --bg-panel-strong: rgba(12, 16, 27, 0.9);
+  --line-core: rgba(234, 239, 255, 0.78);
+  --line-glow: rgba(123, 162, 237, 0.36);
+  --text-main: #f5f1e8;
+  --text-soft: rgba(245, 241, 232, 0.72);
+  --text-faint: rgba(245, 241, 232, 0.46);
+  --stroke: rgba(255, 255, 255, 0.09);
+  --stroke-strong: rgba(180, 203, 255, 0.24);
+  --accent: #b5c8ff;
+  --accent-strong: #d7e1ff;
+  --shadow-xl: 0 28px 80px rgba(0, 0, 0, 0.58);
+  --shadow-md: 0 14px 40px rgba(0, 0, 0, 0.34);
+  --container: 1120px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: "Manrope", Arial, sans-serif;
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at 50% 14%, rgba(65, 96, 162, 0.16), transparent 28%),
+    radial-gradient(circle at 20% 20%, rgba(67, 89, 137, 0.08), transparent 24%),
+    linear-gradient(180deg, #03050a 0%, var(--bg-deep) 52%, #020307 100%);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input {
+  font: inherit;
+}
+
+.site-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.backdrop__nebula,
+.backdrop__grid,
+.backdrop__glow,
+.backdrop__horizon,
+.backdrop__noise {
+  position: absolute;
+  inset: 0;
+}
+
+.backdrop__nebula {
+  background:
+    radial-gradient(circle at 50% 30%, rgba(80, 109, 177, 0.12), transparent 30%),
+    radial-gradient(circle at 50% 60%, rgba(34, 48, 82, 0.18), transparent 42%);
+  filter: blur(8px);
+}
+
+.backdrop__grid {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 26%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 104px,
+      rgba(255, 255, 255, 0.018) 105px,
+      transparent 106px
+    );
+  opacity: 0.28;
+}
+
+.backdrop__glow {
+  top: 50%;
+  height: 220px;
+  transform: translateY(-50%);
+  background:
+    radial-gradient(ellipse at center, rgba(108, 134, 200, 0.18), transparent 56%),
+    linear-gradient(180deg, transparent, rgba(123, 149, 210, 0.05), transparent);
+  filter: blur(18px);
+}
+
+.backdrop__horizon {
+  top: 50%;
+  height: 1px;
+  inset-inline: -8%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(98, 134, 205, 0.1) 18%,
+    var(--line-core) 50%,
+    rgba(98, 134, 205, 0.1) 82%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 20px 2px var(--line-glow),
+    0 0 54px 8px rgba(89, 115, 177, 0.12);
+  opacity: 0.92;
+}
+
+.backdrop__noise {
+  opacity: 0.16;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.22) 0.6px, transparent 0.6px);
+  background-size: 10px 10px;
+  mask-image: linear-gradient(180deg, transparent 0%, black 20%, black 80%, transparent 100%);
+}
+
+.stage {
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.access-card {
+  position: relative;
+  width: min(92vw, 460px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(14, 18, 28, 0.72), rgba(8, 11, 18, 0.46));
+  box-shadow: var(--shadow-md);
+  display: grid;
+  gap: 0;
+  padding: 24px;
+  border-radius: 28px;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+}
+
+.access-card--minimal::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.access-card__halo {
+  position: absolute;
+  inset: auto 10% -30% 10%;
+  height: 120px;
+  background: radial-gradient(ellipse at center, rgba(162, 189, 255, 0.18), transparent 70%);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.access-card__input {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 62px;
+  padding: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.035);
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.access-card__input::placeholder {
+  color: rgba(245, 241, 232, 0.28);
+}
+
+.access-card__input:focus {
+  border-color: rgba(195, 212, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 4px rgba(177, 199, 255, 0.08);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 980px) {
+  .access-card {
+    width: min(92vw, 420px);
+  }
+}
+
+@media (max-width: 720px) {
+  .access-card {
+    padding: 22px;
+    border-radius: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

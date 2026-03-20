@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Horizon is a dark, atmospheric teaser site with a password-gated threshold, subtle motion, and a restrained mystic aesthetic."
+  >
+  <title>Horizon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <div class="backdrop" aria-hidden="true">
+      <div class="backdrop__nebula"></div>
+      <div class="backdrop__grid"></div>
+      <div class="backdrop__glow"></div>
+      <div class="backdrop__horizon"></div>
+      <div class="backdrop__noise"></div>
+    </div>
+
+    <main>
+      <section class="stage" aria-label="Password access">
+        <form class="access-card access-card--minimal" id="access-form">
+          <div class="access-card__halo" aria-hidden="true"></div>
+          <label class="sr-only" for="password">Password</label>
+          <input
+            class="access-card__input"
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Enter password"
+          >
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
